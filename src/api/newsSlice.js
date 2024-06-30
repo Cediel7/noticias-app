@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const newsApi = createApi({
-  reducerPath: 'newsApi',
+export const newsSlice = createApi({
+  reducerPath: 'newsSlice',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://eventregistry.org/api/v1/',
   }),
@@ -19,7 +19,20 @@ export const newsApi = createApi({
         )
       },
     }),
+    getBreakingEvents: builder.query({
+      query: (params) => {
+        const urlParms = new URLSearchParams(params)
+        urlParms.set("apiKey", import.meta.env.VITE_API_KEY);
+        return (
+          {
+            url: "event/getBreakingEvents",
+            method: 'GET',
+            params: urlParms
+          }
+        )
+      },
+    })
   }),
 });
 
-export const { useGetArticlesQuery } = newsApi;
+export const { useGetArticlesQuery, useGetBreakingEventsQuery } = newsSlice;

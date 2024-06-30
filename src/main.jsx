@@ -1,13 +1,14 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
-import { Provider } from 'react-redux';
-import store from './store';
+import { ApiProvider } from "@reduxjs/toolkit/query/react";
 import App from './App';
+import { newsSlice } from './api/newsSlice';
 
 const root = createRoot(document.getElementById('root'));
 
 
 root.render(
-<Provider store={store}>
+<ApiProvider api={newsSlice}>
   <App />
-</Provider>)
+</ApiProvider>
+)

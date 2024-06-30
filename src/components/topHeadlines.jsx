@@ -1,46 +1,74 @@
-import React from 'react';
-import { useGetArticlesQuery } from '../store/newsApi';
+import React, { useState } from 'react';
+import { useGetArticlesQuery, useGetBreakingEventsQuery } from '../api/newsSlice';
 
 const TopHeadlines = () => {
+  const [query, setQuery] = useState("");
+  const [articlesCount, setArticlesCount] = useState(10);
   const { data, error, isLoading } = useGetArticlesQuery({  
+      
       action: "getArticles",
-      keyword: "Barack Obama",
+      keyword: query.split(" "),
+      keywordOper: "or",
       articlesPage: 1,
-      articlesCount: 20,
+      lang: "eng",
+      articlesCount: articlesCount,
+      dataType: "news",
       articlesSortBy: "date",
       articlesSortByAsc: false,
-      articlesArticleBodyLen: -1,
       resultType: "articles",
-      dataType: "news",
-      forceMaxDataTimeWindow: 31
+      forceMaxDataTimeWindow: 31,
   });
+
+
+  const handleOnQueryChange = (e) => {
+    const { value } = e.target;
+
+    setQuery(value);
+  }
+
+  const handleOnArticlesCount = (e) => {
+    const { value } = e.target;
+    setArticlesCount(value);
+  }
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className='flex flex-col justify-center dark:bg-gray-800 content-center items-center'>
-      <h1 className='text-7xl font-bold text-gray-900 dark:text-white mb-10'>Top Headlines</h1>
+    <div className='flex flex-col justify-center dark:bg-gray-800 content-center items-center w-full'>
+      <h1 className='text-7xl font-bold text-gray-900 dark:text-white mb-10'>
+        Busqueda de noticias
+      </h1>
+      <div className="flex justify-between w-full px-20 mb-10">
+        <input placeholder='Search' type='text' value={query} onChange={handleOnQueryChange} className="max-w-80 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+        <select id="countries" value={articlesCount} onChange={handleOnArticlesCount} class="max-w-32 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option selected >Show elements</option>
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={15}>15</option>
+          <option value={20}>20</option>
+        </select>
+      </div>
       <ul className='flex flex-wrap gap-4 content-center items-center px-20'>
-        {data.articles.results?.map((item) => {
+        {data.articles.results?.map((item, index) => {
           return (
-            <li class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <li key={`${index}-${item.title}`} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
-                    <img class="rounded-t-lg" src={item.image} alt="" />
+                    <img className="rounded-t-lg" src={item.image} alt="" />
                 </a>
-                <div class="p-5">
+                <div className="p-5">
                     <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                          {item.title} 
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                          {item.title}
                         </h5>
                     </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                       {item.body.substring(0, 20)} ...
                     </p>
-                    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Read more
-                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                         </svg>
                     </a>
                 </div>
