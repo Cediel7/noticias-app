@@ -31,8 +31,22 @@ export const newsSlice = createApi({
           }
         )
       },
-    })
+    }),
+    getEventDetails: builder.query({
+      /* https://eventregistry.org/api/v1/article/getArticle */
+      query: (params) => {
+      const urlParms = new URLSearchParams(params)
+      urlParms.set("apiKey", import.meta.env.VITE_API_KEY);
+      return (
+        {
+          url: "article/getArticle",
+          method: 'GET',
+          params: urlParms
+        }
+      )
+    },
+  })
   }),
 });
 
-export const { useGetArticlesQuery, useGetBreakingEventsQuery } = newsSlice;
+export const { useGetArticlesQuery, useGetBreakingEventsQuery, useGetEventDetailsQuery } = newsSlice;
