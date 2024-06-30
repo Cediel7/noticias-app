@@ -1,6 +1,5 @@
 import { useState } from 'react'
-//@ts-ignore
-import TopHeadlines from './components/TopHeadlines'
+import TopHeadlines from './components/topHeadlines'
 import './App.css'
 
 function App() {
