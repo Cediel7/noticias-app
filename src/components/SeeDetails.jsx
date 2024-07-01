@@ -11,6 +11,8 @@ const SeeDetails = ({ data, articleUri }) => {
             <h1 className="text-2xl pt-10"><strong>{data[articleUri].info.title}</strong></h1>
             <img className="" src={data[articleUri].info.image} alt="DetailsArticle" />
             <p>{data[articleUri].info.body}</p>
+
+                <h1 className="text-2xl">ARTICULOS RELACIONADOS</h1>
         </div>
     );
 }
