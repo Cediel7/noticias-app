@@ -32,7 +32,7 @@ export const newsSlice = createApi({
         )
       },
     }),
-    getEventDetails: builder.query({
+    getArticleDetails: builder.query({
       /* https://eventregistry.org/api/v1/article/getArticle */
       query: (params) => {
       const urlParms = new URLSearchParams(params)
@@ -45,8 +45,22 @@ export const newsSlice = createApi({
         }
       )
     },
+  }),
+    getNewArticle: builder.query({
+    /*https://eventregistry.org/api/v1/minuteStreamArticles*/
+      query: (params) => {
+      const urlParms = new URLSearchParams(params)
+      urlParms.set("apiKey", import.meta.env.VITE_API_KEY);
+      return (
+        {
+          url: "minuteStreamArticles",
+          method: 'GET',
+          params: urlParms
+        }
+      )
+    },
   })
   }),
 });
 
-export const { useGetArticlesQuery, useGetBreakingEventsQuery, useGetEventDetailsQuery } = newsSlice;
+export const { useGetArticlesQuery, useGetBreakingEventsQuery, useGetArticleDetailsQuery, useGetNewArticleQuery } = newsSlice;

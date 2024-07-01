@@ -1,12 +1,46 @@
-import NewsCarousel from "../components/newsCarousel";
 
+import { useGetNewArticleQuery } from "../api/newsSlice";
 const Home = () => {
-    const data = [{image: "https://cdn.betakit.com/wp-content/uploads/2024/06/team_jolt_capital_feature.jpg"}]
+    
+    const {data, isLoading, isError} = useGetNewArticleQuery({
+          
+            articleBodyLen: -1,
+            includeArticleConcepts: true,
+            includeArticleCategories: true,
+            recentActivityArticlesMaxArticleCount:10
+
+    })
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (isError) {
+        return <div>Error loading data</div>;
+    }
+
+    console.log(data);
+
+
+
     return (
-    <div className='flex flex-col justify-center dark:bg-gray-800 content-center items-center w-full min-h-screen dark:text-white'>
-        <NewsCarousel data={data} />
-    </div>
+        
+     <ul className="flex min-h-screen pt-10 dark:bg-gray-800 flex-wrap gap-4 content-center justify-center items-center px-10 md:px-20 ">
+        {data?.recentActivityArticles?.activity?.map((item, index)=> {
+            return (
+                <li className="dark:text-slate-100 w-52 h-60 bg-white rounded-lg shadow dark:bg-gray-800 dark:hover:bg-gray-700 " key={`${index}-${item.title}`}> 
+                <h1>
+                  {item.title}
+                </h1>
+                <img src={item.image} alt="" />
+                </li>
+            )
+        })}
+     </ul> 
     )
 }
 
 export default Home;
+
+//<img src={data.recentActivityArticles.activity[0].image} alt="" />
+

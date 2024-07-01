@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useGetEventDetailsQuery } from "../api/newsSlice";
+import { useGetArticleDetailsQuery } from "../api/newsSlice";
 import SeeDetails from "../components/SeeDetails";
 
 
@@ -7,7 +7,7 @@ const Details = () => {
     const { articleUri } = useParams();
     console.log(articleUri);
 
-    const {data, isLoading, isError} = useGetEventDetailsQuery({
+    const {data, isLoading, isError} = useGetArticleDetailsQuery({
         articleUri,
         action: "getArticle",
         infoArticleBodyLen: -1,
