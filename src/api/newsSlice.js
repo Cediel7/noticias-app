@@ -59,6 +59,20 @@ export const newsSlice = createApi({
         }
       )
     },
+  }),
+  getPagesArticles: builder.query({
+    /*https://eventregistry.org/api/v1/article/getArticlesForTopicPage*/
+      query: (params) => {
+      const urlParms = new URLSearchParams(params)
+      urlParms.set("apiKey", import.meta.env.VITE_API_KEY);
+      return (
+        {
+          url: "article/getArticlesForTopicPage",
+          method: 'GET',
+          params: urlParms
+        }
+      )
+    },
   })
   }),
 });
