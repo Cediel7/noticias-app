@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useGetEventDetailsQuery } from "../api/newsSlice";
+import SeeDetails from "../components/SeeDetails";
+
 
 const Details = () => {
     const { articleUri } = useParams();
@@ -11,10 +13,20 @@ const Details = () => {
         infoArticleBodyLen: -1,
         resultType: "info",
     })
+
+    console.log(data);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (isError) {
+        return <div>Error loading data</div>;
+    }
+
     return (
         <div className='flex flex-col justify-center dark:bg-gray-800 content-center items-center w-full min-h-screen dark:text-white'>
-        Details
-        {JSON.stringify(data)}
+        <SeeDetails data = {data} articleUri = {articleUri}/>
     </div>
 )
 }

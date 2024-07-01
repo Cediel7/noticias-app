@@ -39,10 +39,10 @@ const TopHeadlines = () => {
 
   return (
     <div className='flex flex-col justify-center dark:bg-gray-800 content-center items-center w-full'>
-      <h1 className='text-7xl font-bold text-gray-900 dark:text-white mb-10'>
-        Busqueda de noticias
+      <h1 className='text-3xl font-bold text-gray-900 dark:text-white mb-10 mt-10'>
+        BUSQUEDA NOTICIAS
       </h1>
-      <div className="flex justify-between w-full px-20 mb-10">
+      <div className="flex justify-center w-full px-20 mb-10 gap-4">
         <input placeholder='Search' type='text' value={query} onChange={handleOnQueryChange} className="max-w-80 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         <select id="countries" value={articlesCount} onChange={handleOnArticlesCount} className="max-w-32 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option selected >Show elements</option>
@@ -52,7 +52,7 @@ const TopHeadlines = () => {
           <option value={20}>20</option>
         </select>
       </div>
-      <ul className='flex flex-wrap gap-4 content-center justify-center items-center px-10 md:px-20'>
+      <ul className=' flex flex-wrap gap-4 content-center justify-center items-center px-10 md:px-20'>
         {data.articles.results?.map((item, index) => {
           return (
             <li key={`${index}-${item.title}`} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

@@ -4,25 +4,25 @@ const NewsCarousel = ({data}) => {
     <div id="default-carousel" className="relative w-full" data-carousel="slide">
         <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
             {/* <!-- Item 1 --> */}
-            <div className="hidden duration-700 ease-in-out" data-carousel-item>
+            <div className="hidden duration-700 ease-in-out flex-col items-center" data-carousel-item>
                 <h1>NOTICIA</h1>
-                <img src="https://cdn.betakit.com/wp-content/uploads/2024/06/team_jolt_capital_feature.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
+                <img src="https://images.emojiterra.com/google/android-pie/512px/1f5ff.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
             </div>
             {/* <!-- Item 2 --> */}
             <div className="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="https://cdn.betakit.com/wp-content/uploads/2024/06/team_jolt_capital_feature.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
+                <img src="https://images.emojiterra.com/google/android-pie/512px/1f5ff.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
             </div>
             {/* <!-- Item 3 --> */}
-            <div className="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="https://cdn.betakit.com/wp-content/uploads/2024/06/team_jolt_capital_feature.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
+            <div className="hidden duration-700 ease-in-out " data-carousel-item>
+                <img src="https://images.emojiterra.com/google/android-pie/512px/1f5ff.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
             </div>
             {/* <!-- Item 4 --> */}
             <div className="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="https://cdn.betakit.com/wp-content/uploads/2024/06/team_jolt_capital_feature.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
+                <img src="https://images.emojiterra.com/google/android-pie/512px/1f5ff.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
             </div>
             {/* <!-- Item 5 --> */}
             <div className="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="https://cdn.betakit.com/wp-content/uploads/2024/06/team_jolt_capital_feature.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
+                <img src="https://images.emojiterra.com/google/android-pie/512px/1f5ff.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
             </div>
         </div>
         {/* <!-- Slider indicators --> */}

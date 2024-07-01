@@ -39,8 +39,8 @@ const NavBar = ( ) => {
         changeTheme(theme, nextTheme);
     }
     return ( 
-        <nav className="bg-white border-gray-200 dark:bg-gray-900">
-          <div className="max-w-screen-xl flex flex-wrap items-center mx-auto p-4 justify-between">
+        <nav className="w-full h-32 bg-white border-gray-200 dark:bg-gray-900 flex  items-center">
+          <div className="max-w-screen-xl flex flex-wrap items-center mx-auto p-4 justify-between w-full">
             <NavLink to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">News App</span>
             </NavLink>
