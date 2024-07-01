@@ -4,6 +4,7 @@ import Home from '../views/Home';
 import Details from '../views/Details';
 import NavBar from '../components/navBar';
 
+
 const Router = () => {
 
   return (
@@ -28,6 +29,7 @@ const Router = () => {
           <Details/>
         }
         />
+
     </Routes>
     </>
   )

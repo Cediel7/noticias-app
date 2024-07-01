@@ -26,8 +26,8 @@ const Details = () => {
 
     return (
         <div className='flex flex-col justify-center dark:bg-gray-800 content-center items-center w-full min-h-screen dark:text-white'>
-        <SeeDetails data = {data} articleUri = {articleUri}/>
-    </div>
+           <SeeDetails data = {data} articleUri = {articleUri}/>
+        </div>
 )
 }
 

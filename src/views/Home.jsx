@@ -1,5 +1,6 @@
 
 import { useGetNewArticleQuery } from "../api/newsSlice";
+import {Link} from "react-router-dom";
 const Home = () => {
     
     const {data, isLoading, isError} = useGetNewArticleQuery({
@@ -29,10 +30,15 @@ const Home = () => {
         {data?.recentActivityArticles?.activity?.map((item, index)=> {
             return (
                 <li className="dark:text-slate-100 w-52 h-60 bg-white rounded-lg shadow dark:bg-gray-800 dark:hover:bg-gray-700 " key={`${index}-${item.title}`}> 
+                <Link to={`/details/${item.uri}`}>
                 <h1>
                   {item.title}
                 </h1>
-                <img src={item.image} alt="" />
+                </Link>
+
+                <Link to={`/details/${item.uri}`}>
+                  <img src={item.image} alt="" />
+                </Link>
                 </li>
             )
         })}
